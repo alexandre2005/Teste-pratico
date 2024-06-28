@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VeiculoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +21,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('home-veiculo', [VeiculoController::class,'index']);
+Route::get('add-veiculo', [VeiculoController::class,'create']);
+Route::post('store-veiculo', [VeiculoController::class, 'store']);
+Route::delete('delete-veiculo/{id}', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
+
 Route::group(['prefix'=>'admin', 'as'=>'admin.'], function () {
     //Authentication Rotes
     $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -32,3 +40,6 @@ Route::group(['prefix'=>'admin', 'as'=>'admin.'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 });
+
+Auth::routes();
+
