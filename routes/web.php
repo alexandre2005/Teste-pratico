@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('home-veiculo', [VeiculoController::class,'index']);
 Route::get('add-veiculo', [VeiculoController::class,'create']);
 Route::post('store-veiculo', [VeiculoController::class, 'store']);
+Route::get('edit-veiculo/{id}', [VeiculoController::class, 'edit']);
+Route::put('update-veiculo/{id}', [VeiculoController::class, 'update']);
 Route::delete('delete-veiculo/{id}', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
 
 Route::group(['prefix'=>'admin', 'as'=>'admin.'], function () {

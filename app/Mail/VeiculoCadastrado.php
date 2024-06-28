@@ -33,7 +33,7 @@ class VeiculoCadastrado extends Mailable
     {
         
         return $this->view('emails.veiculo_cadastrado')
-            ->subject('Cadastro de Veículo Concluído')
+            ->subject('Cadastro ou update de Veículo Concluído')
             ->with([
                 'id' => $this->veiculo->id,
                 'modelo' => $this->veiculo->modelo,
